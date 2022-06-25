@@ -3,6 +3,7 @@ import type { AppProps } from "next/app";
 
 import Header from "../components/Header";
 
+// FIXME: Do not render Header on register and login
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>

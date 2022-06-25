@@ -12,7 +12,7 @@ class RegisterController extends Controller
     public function register(Request $request)
     {
         // FIXME: Handle already created username
-        $user = User::create($request->all());
+        $user = User::create($request->only('username', 'password'));
         $token = $user->createToken('token-auth')->plainTextToken;
         return new TokenResource($token);
     }
