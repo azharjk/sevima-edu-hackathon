@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 interface LogoAndButtonProps {
   onClick: () => void;
 }
@@ -21,9 +23,11 @@ const LogoAndButton: React.FC<LogoAndButtonProps> = ({ onClick }) => {
           />
         </svg>
       </button>
-      <h1>
-        <span className="font-semibold">Sevima</span> edu
-      </h1>
+      <Link href="/">
+        <h1 className="cursor-pointer">
+          <span className="font-semibold">Sevima</span> edu
+        </h1>
+      </Link>
     </div>
   );
 };
