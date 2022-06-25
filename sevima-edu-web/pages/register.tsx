@@ -4,16 +4,12 @@ import { SubmitHandler, useForm } from "react-hook-form";
 
 import type { NextPage } from "next";
 
+import { TokenResponse } from "../interfaces/token";
+
 interface RegisterForm {
   username: string;
   password: string;
   confirmPassword: string;
-}
-
-interface TokenResponse {
-  data: {
-    auth_token: string;
-  };
 }
 
 const Register: NextPage = () => {
