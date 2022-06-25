@@ -13,7 +13,7 @@ const Drawer: React.FC<DrawerProps> = ({ isOpen, onClose }) => {
       <div
         className={`${
           isOpen ? "" : "hidden"
-        } z-10 fixed bottom-0 top-0 w-3/4 bg-white shadow-xl animate-slide-to-right`}
+        } z-10 fixed bottom-0 top-0 w-3/4 sm:w-[20rem] bg-white shadow-xl animate-slide-to-right`}
       >
         <div>
           <header className="p-4 border-b">
