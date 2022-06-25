@@ -1,6 +1,10 @@
+import { useEffect, useState } from "react";
+
 import LogoAndButton from "./LogoAndButton";
 import DrawerPageList from "./DrawerPageList";
 import DrawerItem from "./DrawerItem";
+
+import { User } from "../interfaces/user";
 
 interface DrawerProps {
   isOpen: boolean;
@@ -8,6 +12,32 @@ interface DrawerProps {
 }
 
 const Drawer: React.FC<DrawerProps> = ({ isOpen, onClose }) => {
+  const [user, setUser] = useState<User>();
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const token = localStorage.getItem("auth_token");
+
+      if (token === null) {
+        // FIXME: Handle unauthorized case
+        alert("Unauthorized");
+        return;
+      }
+
+      const res = await fetch("http://localhost:8000/api/user", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const data = (await res.json()) as User;
+
+      setUser(data);
+    };
+
+    fetchUser();
+  }, []);
+
   return (
     <>
       <div
@@ -21,7 +51,7 @@ const Drawer: React.FC<DrawerProps> = ({ isOpen, onClose }) => {
           </header>
           <section className="p-4 border-b">
             <div>
-              <span className="text-slate-500">myuser_name2</span>
+              <span className="text-slate-500">{user?.username}</span>
             </div>
           </section>
           <section className="border-b">

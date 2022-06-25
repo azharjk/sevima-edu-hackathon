@@ -4,9 +4,7 @@ import { useEffect, useState } from "react";
 import ForumCard from "../components/ForumCard";
 import MainLayout from "../components/MainLayout";
 
-interface User {
-  username: string;
-}
+import { User } from "../interfaces/user";
 
 interface Forum {
   id: number;
