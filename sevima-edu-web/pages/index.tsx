@@ -2,6 +2,7 @@ import type { NextPage } from "next";
 import { useEffect, useState } from "react";
 
 import ForumCard from "../components/ForumCard";
+import MainLayout from "../components/MainLayout";
 
 interface User {
   username: string;
@@ -50,17 +51,19 @@ const Home: NextPage = () => {
   }, []);
 
   return (
-    <div className="flex justify-center">
-      <main className="p-4 w-full max-w-[70rem]">
-        <ul className="grid gap-3 sm:grid-cols-2 md:grid-cols-3">
-          {forums.map(({ id, title, author }) => (
-            <li key={id}>
-              <ForumCard title={title} author={author.username} id={id} />
-            </li>
-          ))}
-        </ul>
-      </main>
-    </div>
+    <MainLayout>
+      <div className="flex justify-center">
+        <main className="p-4 w-full max-w-[70rem]">
+          <ul className="grid gap-3 sm:grid-cols-2 md:grid-cols-3">
+            {forums.map(({ id, title, author }) => (
+              <li key={id}>
+                <ForumCard title={title} author={author.username} id={id} />
+              </li>
+            ))}
+          </ul>
+        </main>
+      </div>
+    </MainLayout>
   );
 };
 
